@@ -55,7 +55,7 @@ with profile(activities=[ProfilerActivity.CPU, ProfilerActivity.CUDA], with_stac
     for _ in range(10):
         torch.cuda.synchronize()
         start = time.monotonic()
-        cpp.grouped_gemm(As, Bs, Cs)
+        cpp.grouped_gemm(As, Bs, Cs, True)
         torch.cuda.synchronize()
         end = time.monotonic()
         print(f"cutlass: {(end - start)*1000} (ms)")
